@@ -76,7 +76,7 @@ export default function Home() {
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Browse, preview, and manage your media files with support for all formats. 
-              Built with the power of VLC's media engine.
+              Built with the power of VLC&apos;s media engine.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function Home() {
             <CardContent>
               <CardDescription>
                 Support for MPEG, AVI, MP4, MKV, and hundreds of other media formats
-                through VLC's powerful codec library.
+                through VLC&apos;s powerful codec library.
               </CardDescription>
             </CardContent>
           </Card>
