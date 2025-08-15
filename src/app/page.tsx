@@ -1,103 +1,146 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Play, Film, Video, Download } from "lucide-react";
+
+const VLCIcon = () => (
+  <div className="relative">
+    <div className="w-32 h-40 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg shadow-lg">
+      {/* Film strip holes */}
+      <div className="absolute left-2 top-2 space-y-2">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="w-3 h-3 bg-white rounded border border-gray-300" />
+        ))}
+      </div>
+      <div className="absolute right-2 top-2 space-y-2">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="w-3 h-3 bg-white rounded border border-gray-300" />
+        ))}
+      </div>
+      
+      {/* VLC Cone */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="relative">
+          {/* Cone base */}
+          <div className="w-12 h-3 bg-orange-500 rounded-full"></div>
+          {/* Cone body */}
+          <div className="w-10 h-8 bg-orange-500 rounded-t-full mx-auto relative">
+            <div className="absolute top-2 w-full h-1 bg-white opacity-80 rounded-full"></div>
+            <div className="absolute top-5 w-full h-1 bg-white opacity-80 rounded-full"></div>
+          </div>
+          {/* Cone tip */}
+          <div className="w-6 h-4 bg-orange-500 rounded-t-full mx-auto"></div>
+          <div className="w-3 h-2 bg-orange-600 rounded-full mx-auto"></div>
+        </div>
+      </div>
+      
+      {/* MPEG label */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+        <span className="text-gray-700 font-bold text-lg">MPEG</span>
+      </div>
+      
+      {/* Page curl */}
+      <div className="absolute top-0 right-0 w-6 h-6 bg-white rounded-bl-lg shadow-md"></div>
+    </div>
+  </div>
+);
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-gray-100">
+      {/* Header */}
+      <header className="container mx-auto px-4 py-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Film className="w-8 h-8 text-orange-600" />
+            <h1 className="text-2xl font-bold text-gray-900">Atlas Browser</h1>
+          </div>
+          <Button variant="outline">
+            <Download className="w-4 h-4 mr-2" />
+            Download
+          </Button>
+        </div>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero Section */}
+      <main className="container mx-auto px-4 py-12">
+        <div className="text-center space-y-8">
+          {/* VLC MPEG Icon */}
+          <div className="flex justify-center">
+            <VLCIcon />
+          </div>
+          
+          {/* Hero Text */}
+          <div className="space-y-4">
+            <h2 className="text-5xl font-bold text-gray-900">
+              Universal Media Browser
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Browse, preview, and manage your media files with support for all formats. 
+              Built with the power of VLC's media engine.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex gap-4 justify-center">
+            <Button size="lg" className="bg-orange-600 hover:bg-orange-700">
+              <Play className="w-5 h-5 mr-2" />
+              Start Browsing
+            </Button>
+            <Button size="lg" variant="outline">
+              <Video className="w-5 h-5 mr-2" />
+              Learn More
+            </Button>
+          </div>
+        </div>
+
+        {/* Features */}
+        <div className="grid md:grid-cols-3 gap-6 mt-16">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <Film className="w-5 h-5 mr-2 text-orange-600" />
+                Universal Format Support
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Support for MPEG, AVI, MP4, MKV, and hundreds of other media formats
+                through VLC's powerful codec library.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <Video className="w-5 h-5 mr-2 text-orange-600" />
+                Smart Preview
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Instant thumbnails and metadata extraction for quick file identification
+                and organization.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <Play className="w-5 h-5 mr-2 text-orange-600" />
+                Seamless Playback
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                One-click playback with VLC integration for the best media
+                viewing experience.
+              </CardDescription>
+            </CardContent>
+          </Card>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
